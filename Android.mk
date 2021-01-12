@@ -1,5 +1,7 @@
 LOCAL_PATH := $(call my-dir)
 
+ifneq ($(filter $(QSSI_SUPPORTED_PLATFORMS),$(TARGET_BOARD_PLATFORM)),)
+
 QMAA_DISABLES_WFD := false
 ifeq ($(TARGET_USES_QMAA),true)
 ifneq ($(TARGET_USES_QMAA_OVERRIDE_WFD),true)
@@ -23,3 +25,5 @@ include $(call all-makefiles-under, $(LOCAL_PATH))
 endif #QMAA_DISABLES_WFD
 endif #TARGET_HAS_LOW_RAM
 endif #WFD_DISABLE_PLATFORM_LIST
+
+endif
